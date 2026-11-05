@@ -32,15 +32,6 @@ export const Route = createFileRoute("/club")({
   component: Club,
 });
 
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 function Club() {
   return (
     <main>
@@ -62,27 +53,39 @@ function Club() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="person-card">
-              <div className="person-badge">{initials(president.name)}</div>
-              <div>
+            <article className="person-card">
+              <div className="person-photo person-photo--wide">
+                <img
+                  src={president.photo}
+                  alt={`${president.name}, president of Real Madrid`}
+                  loading="lazy"
+                />
+              </div>
+              <div className="person-body">
                 <h3>{president.name}</h3>
-                <p className="role">{president.role.toUpperCase()}</p>
+                <p className="role">{president.role}</p>
                 <p>{president.note}</p>
               </div>
-            </div>
+            </article>
 
-            <div className="person-card">
-              <div className="person-badge">{initials(headCoach.name)}</div>
-              <div>
+            <article className="person-card">
+              <div className="person-photo person-photo--portrait">
+                <img
+                  src={headCoach.photo}
+                  alt={`${headCoach.name}, head coach of Real Madrid`}
+                  loading="lazy"
+                />
+              </div>
+              <div className="person-body">
                 <h3>{headCoach.name}</h3>
-                <p className="role">{headCoach.role.toUpperCase()}</p>
+                <p className="role">{headCoach.role}</p>
                 <p>{headCoach.note}</p>
                 <p>
                   Born {formatBorn(headCoach.born)} in {headCoach.birthplace}. Previously:{" "}
                   {headCoach.career}
                 </p>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -97,10 +100,19 @@ function Club() {
           </div>
           <div className="staff-grid">
             {coachingStaff.map((member) => (
-              <div key={member.name} className="staff-card">
-                <strong>{member.name}</strong>
-                <span>{member.role.toUpperCase()}</span>
-              </div>
+              <article key={member.name} className="staff-card">
+                <div className="staff-photo">
+                  <img
+                    src={member.photo}
+                    alt={`${member.name}, ${member.role.toLowerCase()}`}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="staff-body">
+                  <strong>{member.name}</strong>
+                  <span>{member.role}</span>
+                </div>
+              </article>
             ))}
           </div>
         </div>

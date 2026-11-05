@@ -37,59 +37,40 @@ export function PlayerCard({ player }: { player: Player }) {
 
   return (
     <>
-      <Button
-        variant="ghost"
-        className="player-card"
-        aria-label={`View ${player.name} profile`}
-        onClick={() => setOpen(true)}
-      >
-        <div className="player-portrait">
-          <span className="shirt-number">{player.number}</span>
-          <span className="player-country" title={player.country}>
+      <button type="button" className="player-card" onClick={() => setOpen(true)}>
+        <span className="player-portrait">
+          <img src={player.photo} alt={player.name} loading="lazy" width={441} height={587} />
+        </span>
+        <span className="player-info">
+          <span className="player-num">{player.number}</span>
+          <span className="player-named">
+            <strong>{player.shortName}</strong>
+            <em>{player.position}</em>
+          </span>
+          <span className="player-flag" title={`Born in ${player.country}`}>
             {player.flag}
           </span>
-          {player.image ? (
-            <img src={player.image} alt={player.name} loading="lazy" />
-          ) : (
-            // No portrait on file for this player: the shirt number carries the
-            // card rather than a broken image or a stand-in face.
-            <span className="player-noportrait" aria-hidden="true" />
-          )}
-        </div>
-        <div className="player-info">
-          <div>
-            <h3>{player.shortName}</h3>
-            <p>{player.position.toUpperCase()}</p>
-          </div>
-          <ArrowUpRight />
-        </div>
-      </Button>
+        </span>
+      </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-h-[90vh] overflow-y-auto">
-          {player.image && <img src={player.image} alt={player.name} className="profile-photo" />}
+          <img src={player.photo} alt={player.name} className="profile-photo" />
           <DialogTitle className="font-display text-4xl">{player.name}</DialogTitle>
           <DialogDescription>
             {player.bio ??
-              `${player.position} · born in ${player.birthplace}. Squad number ${player.number}.`}
+              `${player.position} \u00b7 born in ${player.birthplace}. Squad number ${player.number}.`}
           </DialogDescription>
 
-          <div className="profile-stats">
-            <div>
-              <span>SHIRT</span>
-              <strong>{player.number}</strong>
-            </div>
-            <div>
-              <span>POSITION</span>
-              <strong>{player.position}</strong>
-            </div>
-            <div>
-              <span>BORN IN</span>
-              <strong>{player.country}</strong>
-            </div>
-          </div>
-
           <dl className="profile-detail">
+            <div>
+              <dt>Shirt</dt>
+              <dd>{player.number}</dd>
+            </div>
+            <div>
+              <dt>Position</dt>
+              <dd>{player.position}</dd>
+            </div>
             <div>
               <dt>Date of birth</dt>
               <dd>
@@ -110,15 +91,15 @@ export function PlayerCard({ player }: { player: Player }) {
 
           <div className="profile-stats">
             <div>
-              <span>APPEARANCES</span>
+              <span>Appearances</span>
               <strong>{player.stats.played}</strong>
             </div>
             <div>
-              <span>AS STARTER</span>
+              <span>As starter</span>
               <strong>{player.stats.starter}</strong>
             </div>
             <div>
-              <span>MINUTES</span>
+              <span>Minutes</span>
               <strong>{player.stats.minutes.toLocaleString("en-GB")}</strong>
             </div>
           </div>
