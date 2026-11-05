@@ -7,6 +7,8 @@ export const Route = createFileRoute("/privacy")({
       { name: "description", content: "How Madridista Wire handles your email address." },
       { property: "og:title", content: "Privacy | Madridista Wire" },
       { property: "og:description", content: "How Madridista Wire handles your email address." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/privacy" },
     ],
     links: [{ rel: "canonical", href: "/privacy" }],
@@ -16,7 +18,7 @@ export const Route = createFileRoute("/privacy")({
 
 function Privacy() {
   return (
-    <main className="mx-auto w-full max-w-[480px] px-5 py-10">
+    <main className="mx-auto w-full max-w-[720px] px-5 py-16">
       <Link to="/" className="text-sm text-primary underline">
         ← Back
       </Link>
