@@ -7,11 +7,16 @@ import { routeTree } from "@/routeTree.gen";
 // Match routes without running loaders or rendering: loaders may need a server or
 // network the test run lacks, and jsdom never loads the stylesheets React waits on.
 describe("App routing", () => {
-  it("matches a page for / instead of falling back to not found", () => {
-    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+  // Every path the site header links to internally. The header is in the root
+  // layout, so a missing route here is a 404 reachable from every page.
+  it.each(["/", "/news", "/squad", "/privacy"])(
+    "matches a page for %s instead of falling back to not found",
+    (path) => {
+      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
 
-    const matches = router.matchRoutes("/");
+      const matches = router.matchRoutes(path);
 
-    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
-  });
+      expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+    },
+  );
 });
