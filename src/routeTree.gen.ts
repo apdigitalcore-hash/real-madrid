@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClubRouteImport } from './routes/club'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SquadRouteImport } from './routes/squad'
@@ -17,6 +18,11 @@ import { Route as SquadRouteImport } from './routes/squad'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubRoute = ClubRouteImport.update({
+  id: '/club',
+  path: '/club',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -37,12 +43,14 @@ const SquadRoute = SquadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
   '/squad': typeof SquadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
   '/squad': typeof SquadRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
   '/squad': typeof SquadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/news' | '/privacy' | '/squad'
+  fullPaths: '/' | '/club' | '/news' | '/privacy' | '/squad'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/news' | '/privacy' | '/squad'
-  id: '__root__' | '/' | '/news' | '/privacy' | '/squad'
+  to: '/' | '/club' | '/news' | '/privacy' | '/squad'
+  id: '__root__' | '/' | '/club' | '/news' | '/privacy' | '/squad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClubRoute: typeof ClubRoute
   NewsRoute: typeof NewsRoute
   PrivacyRoute: typeof PrivacyRoute
   SquadRoute: typeof SquadRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/club': {
+      id: '/club'
+      path: '/club'
+      fullPath: '/club'
+      preLoaderRoute: typeof ClubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClubRoute: ClubRoute,
   NewsRoute: NewsRoute,
   PrivacyRoute: PrivacyRoute,
   SquadRoute: SquadRoute,

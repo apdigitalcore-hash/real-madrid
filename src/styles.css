@@ -21,3 +21,51 @@
 @media(max-width:1050px){.site-container{width:calc(100% - 56px)}.desktop-nav{gap:20px}.nav-actions .join-button{display:none}.hero-content h1{font-size:67px}.feature-hero{height:480px}.player-portrait{height:210px}.player-info h3{font-size:20px}.newsletter-layout{gap:35px}.footer-socials{gap:15px}.honour{padding-left:18px}.club-strip-inner{gap:15px}}
 @media(max-width:700px){.site-container{width:calc(100% - 36px)}.masthead{height:75px}.brand img{width:32px;height:45px}.brand-name{font-size:21px}.brand-caption{font-size:7px}.desktop-nav{display:none}.mobile-menu-button{display:inline-flex}.ticker-inner{gap:14px;font-size:9px}.feature-hero{height:510px}.feature-hero>img{object-position:65% center}.hero-content h1{font-size:56px;max-width:340px}.hero-content p{max-width:285px;font-size:12px}.hero-category{margin-bottom:18px}.hero-shade{background:var(--hero-shade),var(--hero-bottom)}.hero-bottom{font-size:8px;bottom:20px}.club-strip-inner{grid-template-columns:repeat(3,1fr);gap:10px;padding-block:20px}.club-motto{display:none}.honour{padding-left:12px;gap:8px}.honour:first-of-type{border:0;padding:0}.honour strong{font-size:26px}.honour svg{width:18px}.honour span{font-size:7px}.section-block{padding-block:34px}.section-heading h2{font-size:29px}.section-heading .section-link{font-size:9px}.news-grid{grid-template-columns:1fr;gap:28px}.news-card h3{font-size:26px}.news-card p{font-size:12px}.news-meta{font-size:10px}.news-source{font-size:10px}.player-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.player-portrait{height:215px}.player-info{padding:15px 11px}.player-info h3{font-size:21px}.shirt-number{font-size:85px;left:10px}.newsletter-layout{grid-template-columns:1fr;gap:20px}.newsletter-layout h2{font-size:32px}.newsletter-band{padding-block:32px}.footer-top{align-items:flex-start;flex-direction:column;gap:24px;padding-block:28px}.footer-socials{gap:17px;font-size:10px;flex-wrap:wrap}.footer-bottom{flex-direction:column;gap:14px}.page-heading h1{font-size:50px}.stadium-feature h2{font-size:46px}.stadium-feature{min-height:360px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Squad, starting XI and club pages. */
+.player-noportrait{position:absolute;inset:0}
+.profile-detail{display:grid;gap:10px;padding-block:4px}
+.profile-detail>div{display:flex;justify-content:space-between;gap:16px;font-size:12px}
+.profile-detail dt{color:var(--muted-foreground)}
+.profile-detail dd{margin:0;font-weight:600;text-align:right}
+.squad-group{margin-bottom:38px}
+.squad-group-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.squad-group-head h2{font-family:var(--font-heading);font-size:26px;font-weight:700;margin:0}
+.squad-group-head span{font-size:10px;color:var(--muted-foreground);font-weight:600}
+.pitch{position:relative;background:linear-gradient(170deg,var(--hero-dark),#11151c);border-radius:6px;padding:34px 18px;display:grid;gap:30px;overflow:hidden}
+.pitch:before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,.08)}
+.pitch-line{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+.pitch-slot{width:104px;text-align:center;color:#fff}
+.pitch-shirt{height:52px;width:52px;margin:0 auto 9px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:21px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25)}
+.pitch-slot strong{display:block;font-size:12px;font-weight:600;line-height:1.3}
+.pitch-slot span{display:block;font-size:9px;opacity:.6;margin-top:4px}
+.xi-note{font-size:11px;color:var(--muted-foreground);line-height:1.8;max-width:620px;margin-top:16px}
+.staff-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.staff-card{border:1px solid var(--border);border-radius:4px;background:var(--card);padding:18px}
+.staff-card strong{display:block;font-family:var(--font-heading);font-size:18px;font-weight:600}
+.staff-card span{display:block;font-size:10px;color:var(--muted-foreground);margin-top:5px}
+.person-card{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;border:1px solid var(--border);border-radius:6px;background:var(--card);padding:26px}
+.person-badge{height:66px;width:66px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--primary)}
+.person-card h3{font-family:var(--font-heading);font-size:28px;font-weight:700;margin:0}
+.person-card .role{font-size:10px;font-weight:700;color:var(--primary);margin-top:5px}
+.person-card p{font-size:12px;line-height:1.85;color:var(--muted-foreground);margin:12px 0 0}
+.honour-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.honour-tile{border:1px solid var(--border);border-radius:4px;background:var(--card);padding:20px}
+.honour-tile strong{font-family:var(--font-heading);font-size:34px;font-weight:700;line-height:1;display:block}
+.honour-tile span{font-size:10px;color:var(--muted-foreground);display:block;margin-top:7px}
+.fact-list{display:grid;gap:0;border:1px solid var(--border);border-radius:4px;background:var(--card);overflow:hidden}
+.fact-list>div{display:flex;justify-content:space-between;gap:16px;padding:14px 18px;font-size:12px;border-bottom:1px solid var(--border)}
+.fact-list>div:last-child{border-bottom:0}
+.fact-list dt{color:var(--muted-foreground)}
+.fact-list dd{margin:0;font-weight:600;text-align:right}
+.source-note{font-size:10px;color:var(--muted-foreground);line-height:1.8;margin-top:26px;padding-top:16px;border-top:1px solid var(--border)}
+@media(max-width:1000px){.staff-grid,.honour-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .pitch{padding:24px 10px;gap:22px}
+ .pitch-line{gap:6px}
+ .pitch-slot{width:76px}
+ .pitch-shirt{height:42px;width:42px;font-size:17px}
+ .pitch-slot strong{font-size:10px}
+ .person-card{grid-template-columns:1fr;gap:14px;padding:20px}
+ .squad-group-head h2{font-size:22px}
+}

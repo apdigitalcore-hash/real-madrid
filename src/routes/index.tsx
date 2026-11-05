@@ -25,9 +25,11 @@ export const Route = createFileRoute("/")({
 
 // The lead story is the newest entry in the shared data module, so the hero and
 // the news grid never drift apart.
-const lead = stories[0];
-
 function Hero() {
+  const [lead] = stories;
+  // stories is authored, not fetched, but an empty list must not crash the page.
+  if (!lead) return null;
+
   return (
     <section className="feature-hero">
       <img src={featureImage} alt="Jude Bellingham after the match in Athens" />

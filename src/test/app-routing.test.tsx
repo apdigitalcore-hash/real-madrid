@@ -9,7 +9,7 @@ import { routeTree } from "@/routeTree.gen";
 describe("App routing", () => {
   // Every path the site header links to internally. The header is in the root
   // layout, so a missing route here is a 404 reachable from every page.
-  it.each(["/", "/news", "/squad", "/privacy"])(
+  it.each(["/", "/news", "/squad", "/club", "/privacy"])(
     "matches a page for %s instead of falling back to not found",
     (path) => {
       const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
